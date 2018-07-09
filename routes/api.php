@@ -16,3 +16,8 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/currencies','CurrenciesController@getActiveCurrencies');
+Route::get('/currencies/{id}','CurrenciesController@getCurrenciesById');
+
+Route::resource('/admin/currencies', 'AdminController')->except(['create', 'edit']);
